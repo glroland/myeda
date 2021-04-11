@@ -1,0 +1,24 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  name: ftp-to-echo-integration
+spec:
+  flows:
+    - from:
+        parameters:
+          directoryName: data
+          host: rack.home.glroland.com
+          include: "(?i).*.csv$"
+          preMove: "$simple{file:onlyname}.$simple{date:now:yyyy-MM-dd'T'hh-mm-ss}.processing"
+          move: "$simple{file:onlyname}.$simple{date:now:yyyy-MM-dd'T'hh-mm-ss}.done"
+          moveFailed: "$simple{file:onlyname}.$simple{date:now:yyyy-MM-dd'T'hh-mm-ss}.failed"
+          passiveMode: true
+          password: test1
+          port: 21
+          username: test
+        steps:
+          - log:
+              loggingLevel: INFO
+              message: Processed file
+          - to: 'kafka:echo-topic?brokers=my-cluster-kafka-bootstrap:9092'
+        uri: 'kamelet:ftp-source'
