@@ -9,7 +9,7 @@ import org.apache.camel.spi.DataFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-public class QuoteRoute extends RouteBuilder {
+public class ProcessQuoteHistoryFileRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
@@ -52,7 +52,13 @@ public class QuoteRoute extends RouteBuilder {
             .to("direct:historicQuoteRecord");
 
         from("direct:historicQuoteRecord")
-            .log(LoggingLevel.DEBUG, "Quote History Record: $simple{body}");    
+            .log(LoggingLevel.DEBUG, "Quote History Record: $simple{body}")
+            .to("kafka:{{myeda.kafka.quoteTopic}}" + 
+                    "?brokers={{myeda.kafka.brokers}}" +
+                    "&securityProtocol=SSL" + 
+                    "&sslTruststoreLocation={{myeda.kafka.tsLocation}}" +
+                    "&sslTruststorePassword={{myeda.kafka.tsPassword}}");
     }
 
 }
+
