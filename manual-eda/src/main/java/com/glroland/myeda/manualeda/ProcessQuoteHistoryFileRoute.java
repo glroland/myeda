@@ -53,7 +53,7 @@ public class ProcessQuoteHistoryFileRoute extends RouteBuilder {
 
         from("direct:historicQuoteRecord")
             .log(LoggingLevel.DEBUG, "Quote History Record: $simple{body}")
-            .to("kafka:{{myeda.kafka.quoteTopic}}" + 
+            .to("kafka:{{myeda.kafka.quoteHistoryTopic}}" + 
                     "?brokers={{myeda.kafka.brokers}}" +
                     "&securityProtocol=SSL" + 
                     "&sslTruststoreLocation={{myeda.kafka.tsLocation}}" +
