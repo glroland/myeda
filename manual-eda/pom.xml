@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.4</version>
+		<version>2.4.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.glroland.myeda</groupId>
@@ -14,6 +14,7 @@
 	<description>EDA written the old fashion way in spring</description>
 	<properties>
 		<java.version>11</java.version>
+		<camel.version>3.9.0</camel.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,43 +32,49 @@
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-stream-starter</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-ftp</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-csv</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-bindy</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jackson</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-kafka</artifactId>
-			<version>3.7.3</version>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-atlasmap</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -22,6 +22,7 @@ public class ProcessQuoteHistoryFileRoute extends RouteBuilder {
                 "&download=true" +
                 "&passiveMode=true" + 
                 "&recursive=false" +
+                "&stepwise=true" +
                 "&move=.done" +
                 "&moveFailed=.failed")
             .log(LoggingLevel.INFO, "Received file via FTP for processing: $simple{in.header.CamelFileName}")

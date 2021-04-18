@@ -20,7 +20,7 @@ public class QuoteSimulationRoute extends RouteBuilder {
                 "&securityProtocol=SSL" + 
                 "&sslTruststoreLocation={{myeda.kafka.tsLocation}}" +
                 "&sslTruststorePassword={{myeda.kafka.tsPassword}}")
-            .log(LoggingLevel.INFO, "Quote History Record: $simple{body}")
+            .log(LoggingLevel.DEBUG, "Quote History Record: $simple{body}")
             .unmarshal().json(HistoricQuote.class)
             .process(new Processor() {
                 public void process(Exchange exchange) throws Exception {
@@ -34,7 +34,7 @@ public class QuoteSimulationRoute extends RouteBuilder {
                 }
             })
             .marshal().json()
-            .log(LoggingLevel.INFO, "Quote Record: $simple{body}")
+            .log(LoggingLevel.DEBUG, "Quote Record: $simple{body}")
             .to("kafka:{{myeda.kafka.quoteTopic}}" + 
                     "?brokers={{myeda.kafka.brokers}}" +
                     "&securityProtocol=SSL" + 
