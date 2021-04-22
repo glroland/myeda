@@ -1,0 +1,75 @@
+{
+  "AtlasMapping" : {
+    "jsonType" : "io.atlasmap.v2.AtlasMapping",
+    "dataSource" : [ {
+      "jsonType" : "io.atlasmap.xml.v2.XmlDataSource",
+      "id" : "quote-555807c5-fb2b-4f51-9204-8d8515cf2c3a",
+      "name" : "quote",
+      "description" : "Target document quote type: XSD",
+      "uri" : "atlas:xml:quote-555807c5-fb2b-4f51-9204-8d8515cf2c3a",
+      "dataSourceType" : "TARGET",
+      "xmlNamespaces" : {
+        "xmlNamespace" : [ ]
+      }
+    } ],
+    "mappings" : {
+      "mapping" : [ {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.v2.ConstantField",
+          "value" : "666.69",
+          "docId" : "DOC.Constants.40535",
+          "path" : "/666.69",
+          "fieldType" : "DECIMAL"
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.xml.v2.XmlField",
+          "docId" : "quote-555807c5-fb2b-4f51-9204-8d8515cf2c3a",
+          "path" : "/quote/price",
+          "fieldType" : "DECIMAL",
+          "name" : "price",
+          "userCreated" : false,
+          "attribute" : false
+        } ],
+        "id" : "mapping.60606"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.v2.ConstantField",
+          "value" : "XYZ",
+          "docId" : "DOC.Constants.40535",
+          "path" : "/XYZ",
+          "fieldType" : "STRING"
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.xml.v2.XmlField",
+          "docId" : "quote-555807c5-fb2b-4f51-9204-8d8515cf2c3a",
+          "path" : "/quote/symbol",
+          "fieldType" : "STRING",
+          "name" : "symbol",
+          "userCreated" : false,
+          "attribute" : false
+        } ],
+        "id" : "mapping.349681"
+      } ]
+    },
+    "lookupTables" : {
+      "lookupTable" : [ ]
+    },
+    "constants" : {
+      "constant" : [ {
+        "name" : "666.69",
+        "value" : "666.69",
+        "fieldType" : "DECIMAL"
+      }, {
+        "name" : "XYZ",
+        "value" : "XYZ",
+        "fieldType" : "STRING"
+      } ]
+    },
+    "properties" : {
+      "property" : [ ]
+    },
+    "name" : "UI.0"
+  }
+}
