@@ -1,3 +1,10 @@
+// camek-l: language=java
+// camel-k: name=stock-logprice
+// camel-k: trait=knative.enabled=true 
+// camel-k: dependency=mvn:org.apache.camel/camel-atlasmap 
+// camel-k: configmap=stock-config 
+// camel-k: resource=mapping.json
+
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 

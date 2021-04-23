@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- camel-k: language=xml -->
+<!-- camel-k: name=stock-logprice -->
+<!-- camel-k: trait=knative.enabled=true -->
+<!-- camel-k: dependency=mvn:org.apache.camel/camel-atlasmap -->
+<!-- camel-k: configmap=stock-config -->
+<!-- camel-k: resource=mapping.json -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://camel.apache.org/schema/spring"
+        xsi:schemaLocation="
+            http://camel.apache.org/schema/spring
+            http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <route id="stock-logprice">
+        <from uri="kafka:{{stock.kafka.priceTopic}}?brokers={{stock.kafka.brokers}}"/>
+        <log loggingLevel="INFO" message="Stock Price Record in JSON: $simple{body}" />
+        <to uri="atlasmap:mapping.json"/>
+        <log loggingLevel="INFO" message="Stock Price Record in XML: $simple{body}" />
+
+        <onException>
+            <exception>java.lang.Throwable</exception>
+            <to uri="log:fatal" />
+        </onException>
+    </route>
+
+</routes>
