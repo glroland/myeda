@@ -1,0 +1,23 @@
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+    <route>
+        <from uri="ftp:test@rack.home.glroland.com/data?password=test1">
+            <properties>
+                <property name="binary">false</property>
+                <property name="download">true</property>
+                <property name="move">.done</property>
+                <property name="streamDownload">true</property>
+                <property name="stepwise">false</property>
+                <property name="passiveMode">true</property>
+            </properties>
+        </from>
+        <setBody>
+            <constant>Hello Camel K!</constant>
+         </setBody>
+
+        <to uri="file:inflight?autoCreate=true" />
+
+    </route>
+
+
+</routes>

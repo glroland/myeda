@@ -1,0 +1,38 @@
+- from:
+    uri: "ftp:test@rack.home.glroland.com/data" 
+    parameters: 
+      # time in milliseconds (10 seconds)
+      passiveMode: true
+      binary: false
+      download: true
+      move: ".done"
+      password: "test1"
+      streamDownload: true
+      stepwise: false
+    steps: 
+      - to: 
+          uri: "log:info?multiline=true&showAll=true"
+      - to: 
+          uri: "file:inflight?autoCreate=true"
+
+- from: 
+    uri: "file:inflight?delete=true"
+    steps:
+      - set-property:
+          name: "abc"
+          constant: "def"
+      - split:
+          tokenize:
+            token: "\n"
+      - to: 
+          uri: "log:info?multiline=true&showAll=true"
+      - set-body: 
+          el: "Welcome to Apache Camel K ${abc}"
+      - set-header: 
+          name: ContentType
+          simple: text/plain
+      - transform: 
+          simple: "${body.toUpperCase()}"
+      - to: 
+          uri: "log:info?multiline=true&showAll=true"
+
