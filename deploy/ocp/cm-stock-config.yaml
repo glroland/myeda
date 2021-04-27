@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: stock-config
+  labels:
+    app: stock
+data:
+  application.properties: |
+    stock.ftp.username = test
+    stock.ftp.password = test1
+    stock.ftp.host = rack.home.glroland.com
+    stock.ftp.port = 21
+    stock.ftp.directoryName = data
+
+    stock.kafka.brokers = my-cluster-kafka-bootstrap:9092
+    stock.kafka.priceHistoryTopic = stock-price-history-topic
+    stock.kafka.priceTopic = stock-price-topic

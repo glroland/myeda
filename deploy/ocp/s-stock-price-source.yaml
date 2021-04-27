@@ -1,0 +1,29 @@
+apiVersion: sources.knative.dev/v1beta1
+kind: KafkaSource
+metadata:
+  name: stock-price-source
+  labels:
+    app: stock
+    app.kubernetes.io/component: stock-price-source
+    app.kubernetes.io/instance: stock-price-source
+    app.kubernetes.io/part-of: stock
+spec:
+  bootstrapServers:
+    - 'my-cluster-kafka-bootstrap.rhi.svc:9092'
+  consumerGroup: stock-log-price
+  net:
+    sasl:
+      password: {}
+      type: {}
+      user: {}
+    tls:
+      caCert: {}
+      cert: {}
+      key: {}
+  sink:
+    ref:
+      apiVersion: messaging.knative.dev/v1beta1
+      kind: KafkaChannel
+      name: stock-price-channel
+  topics:
+    - stock-price-topic
