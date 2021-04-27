@@ -1,4 +1,4 @@
-// camek-l: language=java
+// camek-k: language=java
 // camel-k: name=stock-logprice
 // camel-k: trait=knative.enabled=true 
 // camel-k: dependency=mvn:org.apache.camel/camel-atlasmap 
