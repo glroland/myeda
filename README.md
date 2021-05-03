@@ -1,6 +1,7 @@
 # myeda
 
 # Load properties into a config map
+# Alternatively, the config map YAML is already in source control in the deploy/ocp folder
 oc create configmap stock-config --from-file=application.properties 
 
 # Download and process the pricing files
