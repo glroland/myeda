@@ -1,14 +1,19 @@
 # myeda
 
+# Assumes RHI namespace
+oc project rhi
+
 # Load properties into a config map
 # Alternatively, the config map YAML is already in source control in the deploy/ocp folder
 oc create configmap stock-config --from-file=application.properties 
 
-# Download and process the pricing files
-kamel run ProcessPriceHistoryFileRoute.java  --property-file ../application.properties --dependency mvn:org.apache.camel/camel-jackson --dependency mvn:org.apache.camel/camel-bindy
+# STEP 1 - Download and process the pricing files
+kamel run ProcessPriceHistoryFileRoute.java
+kamel run ProcessPriceHistoryFileRoute.java --dev
 
-# Create fresh stock price update messages based on price history messages
-kamel run StockPriceSimulationRoute.java  --property-file ../application.properties --dependency mvn:org.apache.camel/camel-jackson      
+# STEP 2 - Create fresh stock price update messages based on price history messages
+kamel run StockPriceSimulationRoute.java
+kamel run StockPriceSimulationRoute.java --dev      
 
 # Final Message Consumption
 kamel run LogStockPriceRoute.java --dev

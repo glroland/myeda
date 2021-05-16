@@ -1,3 +1,9 @@
+// camel-k: language=java
+// camel-k: name=stock-history-simulatepriceactivity
+// camel-k: label=app=stock
+// camel-k: configmap=stock-config
+// camel-k: dependency=mvn:org.apache.camel/camel-jackson
+
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
@@ -101,7 +107,6 @@ public class StockPriceSimulationRoute extends RouteBuilder {
             this.price = price;
         }
     }
-    
     
     @Override
     public void configure() throws Exception {

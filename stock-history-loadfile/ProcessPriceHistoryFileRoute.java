@@ -1,3 +1,12 @@
+// camel-k: language=java
+// camel-k: name=stock-history-loadfile
+// camel-k: label=app=stock
+// camel-k: configmap=stock-config
+// camel-k: dependency=mvn:org.apache.camel/camel-jackson
+// camel-k: dependency=mvn:org.apache.camel/camel-bindy
+// camel-k: trait=knative.enabled=false
+// camel-k: trait=kamelets.enabled=false
+
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
